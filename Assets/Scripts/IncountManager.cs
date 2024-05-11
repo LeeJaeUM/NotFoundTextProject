@@ -13,11 +13,26 @@ public class IncountManager : MonoBehaviour
     public ChoiseData[] choiseDatas;
     public Button[] buttons = new Button[4];
     public TextMeshProUGUI[] btnTMPs = new TextMeshProUGUI[4];
+    public CanvasGroup[] btnCanvasGroups = new CanvasGroup[4];
 
-    public string[] dividedStrings;
+    public bool isChoise = false;           //선택지 진입 확인 bool 변수
 
-    public float transitionDuration = 1f; // 변화에 걸리는 시간
-    public float currentValue = 0;
+    //몇 번 선택지인지 알리는 변수
+    [SerializeField]
+    private int selectChoiseNum = 0;
+    public int SelectChoiseNum
+    {
+        get => selectChoiseNum;
+        set
+        {
+            selectChoiseNum = value;
+            isChoise = false;
+            ButtonFadeOut();
+        }
+    }
+
+    public float transitionDuration = 1f;   // 변화에 걸리는 시간
+    public float currentValue = 0;          // 페이드 인/아웃에 쓰는 변수
 
     //현재 인카운트의 몇번째 텍스트인지 판단하는 숫자
     public int textIndex = 2;
@@ -50,7 +65,6 @@ public class IncountManager : MonoBehaviour
     public TextMeshProUGUI firstTMP;
     public TextMeshProUGUI secondTMP;
 
-
     public CanvasGroup firstTMPCanvasGroup;
     public CanvasGroup secondTMPCanvasGroup;
 
@@ -72,14 +86,19 @@ public class IncountManager : MonoBehaviour
         child = child.GetChild(1);
         child = child.GetChild(2);
         btnTMPs = child.GetComponentsInChildren<TextMeshProUGUI>(true);
+        buttons = child.GetComponentsInChildren<Button>(true);
+        btnCanvasGroups = child.GetComponentsInChildren<CanvasGroup>(true);
 
-        buttons = GetComponentsInChildren<Button>(true);
         buttons[0].onClick.AddListener(() => OnOneOptionClick());
         buttons[1].onClick.AddListener(() => OnTwoOptionClick());
         buttons[2].onClick.AddListener(() => OnThreeOptionClick());
         buttons[3].onClick.AddListener(() => OnFourOptionClick());
 
-
+        //시작 시 버튼 입력 제한 걸기
+        foreach (var button in buttons)
+        {
+            button.interactable = false;
+        }
 
         inputActions = new PlayerInputActions();
     }
@@ -97,20 +116,23 @@ public class IncountManager : MonoBehaviour
         maxTextIndex = incountDatas[incountIndex].incountSession.Count;
 
     }
-    /*            
-            foreach(var choise in choiseDatas)
-            {
-                if(choise.incountIndex == choiseIndex)
-                {
 
-                }
-            }*/
 
     private void OnClick(InputAction.CallbackContext context)
     {
-        
+        if(!isChoise)
+            DefaultLog();
+        else
+        {
+
+            Debug.Log(selectChoiseNum);
+        }
+    }
+
+    private void DefaultLog()
+    {
         //시작 체크 용도
-        if(textIndex < 0)
+        if (textIndex < 0)
         {
             StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
             TextIndex = 0;
@@ -123,6 +145,10 @@ public class IncountManager : MonoBehaviour
         {
             int choiseIndex = incountDatas[incountIndex].incountSession[textIndex].msgIndex;
             ChoiseTMPUpdate(choiseDatas[choiseIndex]);
+
+            //선택지에 진입한 것을 확인하는
+            isChoise = true;
+
             return;
         }
 
@@ -144,10 +170,6 @@ public class IncountManager : MonoBehaviour
             }
             lengthCount++;
         }
-    }
-
-    private void GoNextText()
-    {
     }
 
 
@@ -192,52 +214,55 @@ public class IncountManager : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-       // TMPUpdate();
     }
 
-    /*
-    private void TMPUpdate()
-    {
-
-        TextIndex++; 
-        firstTMP.text = incountDatas[incountIndex].incountSession[textIndex].msg;
-        TextIndex++;
-        if (TextIndex == 0)
-            return;
-        secondTMP.text = incountDatas[incountIndex].incountSession[textIndex].msg;
-    }*/
-
-
+    #region Buttons
     private void ChoiseTMPUpdate(ChoiseData selectChoise)
     {
-        // choiseDatas[choiseIndex].choiseList.Count
         firstTMP.text = selectChoise.msg1;
         secondTMP.text = selectChoise.msg2;
 
         StartCoroutine(FadeInCo(firstTMPCanvasGroup, true, true));
         StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, true));
 
-        for(int i = 0; i < selectChoise.choiseCount; i++)
+        for (int i = 0; i < selectChoise.choiseCount; i++)
         {
             btnTMPs[i].text = selectChoise.choiseList[i];
+
+            //필요한 버튼만 입력 활성화 및 보이게 하기
+            StartCoroutine(FadeInCo(btnCanvasGroups[i], true, true));
+            buttons[i].interactable = true;
         }
     }
 
+    private void ButtonFadeOut()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = false;
+
+            StartCoroutine(FadeInCo(btnCanvasGroups[i], false, true));
+        }
+        
+    }
 
     public void OnOneOptionClick()
     {
-
+        SelectChoiseNum = 1;
     }
     public void OnTwoOptionClick()
     {
-
+        SelectChoiseNum = 2;
     }
     public void OnThreeOptionClick()
     {
-
+        SelectChoiseNum = 3;
     }
     public void OnFourOptionClick()
     {
-
+        SelectChoiseNum = 4;
     }
+    #endregion
+
+
 }
