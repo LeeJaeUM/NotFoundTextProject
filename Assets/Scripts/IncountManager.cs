@@ -48,9 +48,11 @@ public class IncountManager : MonoBehaviour
             //현재 인카운트의 텍스트를 전부 표현한 뒤라면
             if (textIndex >= maxTextIndex)
             {
+                if(maxTextIndex % 2 != 0)
+                    secondTMP.text = string.Empty;  
                 textIndex = -1;
-                maxTextIndex = incountDatas[incountIndex].incountSession.Count;
                 incountIndex++;
+                maxTextIndex = incountDatas[incountIndex].incountSession.Count;
             }
         }
     }
@@ -224,6 +226,8 @@ public class IncountManager : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+        firstTMP.text = string.Empty;
+        secondTMP.text = string.Empty;
     }
 
     #region Buttons
