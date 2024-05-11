@@ -278,6 +278,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 991795318593037463, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: m_text
+      value: "\uC911\uC559\uD14D\uC2A4\uD2B82"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: textIndex
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
       propertyPath: maxLengthCount
       value: 2
@@ -291,9 +299,21 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: choiseDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
       propertyPath: incountDatas.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: choiseDatas.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 83e9c05d52688b54b906aa26fb9bcf2b, type: 2}
+    - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: choiseDatas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: da896125d70b0fc42bb6ca91309cdc8c, type: 2}
     - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
       propertyPath: incountDatas.Array.data[1]
       value: 
@@ -302,6 +322,10 @@ PrefabInstance:
       propertyPath: incountDatas.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 4fb4c66d63d4ceb4f9d61dcca5635e80, type: 2}
+    - target: {fileID: 1968440585122931286, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: m_text
+      value: "\uC911\uC559\uD14D\uC2A4\uD2B81"
+      objectReference: {fileID: 0}
     - target: {fileID: 2803457863453212378, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

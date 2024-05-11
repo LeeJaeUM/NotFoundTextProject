@@ -11,9 +11,10 @@ public class IncountManager : MonoBehaviour
 {
     public IncountData[] incountDatas;
     public ChoiseData[] choiseDatas;
+    public Button[] buttons = new Button[4];
+    public TextMeshProUGUI[] btnTMPs = new TextMeshProUGUI[4];
 
     public string[] dividedStrings;
-
 
     public float transitionDuration = 1f; // 변화에 걸리는 시간
     public float currentValue = 0;
@@ -30,7 +31,7 @@ public class IncountManager : MonoBehaviour
             //현재 인카운트의 텍스트를 전부 표현한 뒤라면
             if (textIndex >= maxTextIndex)
             {
-                textIndex = 0;
+                textIndex = -1;
                 maxTextIndex = incountDatas[incountIndex].incountSession.Count;
                 incountIndex++;
             }
@@ -49,10 +50,6 @@ public class IncountManager : MonoBehaviour
     public TextMeshProUGUI firstTMP;
     public TextMeshProUGUI secondTMP;
 
-    public Button[] buttons = new Button[4];
-
-    public TextMeshProUGUI leftButtonTMP;
-    public TextMeshProUGUI rightButtonTMP;
 
     public CanvasGroup firstTMPCanvasGroup;
     public CanvasGroup secondTMPCanvasGroup;
@@ -71,11 +68,19 @@ public class IncountManager : MonoBehaviour
     }
     private void Awake()
     {
+        Transform child = transform.GetChild(0);
+        child = child.GetChild(1);
+        child = child.GetChild(2);
+        btnTMPs = child.GetComponentsInChildren<TextMeshProUGUI>(true);
+
         buttons = GetComponentsInChildren<Button>(true);
         buttons[0].onClick.AddListener(() => OnOneOptionClick());
         buttons[1].onClick.AddListener(() => OnTwoOptionClick());
         buttons[2].onClick.AddListener(() => OnThreeOptionClick());
         buttons[3].onClick.AddListener(() => OnFourOptionClick());
+
+
+
         inputActions = new PlayerInputActions();
     }
 
@@ -86,8 +91,8 @@ public class IncountManager : MonoBehaviour
         firstTMPCanvasGroup.alpha = 0f;
         secondTMPCanvasGroup.alpha = 0f;
 
-        firstTMP.text = incountDatas[incountIndex].incountSession[0].msg;
-        secondTMP.text = incountDatas[incountIndex].incountSession[1].msg;
+        firstTMP.text = string.Empty;
+        secondTMP.text = string.Empty;
 
         maxTextIndex = incountDatas[incountIndex].incountSession.Count;
 
@@ -103,16 +108,29 @@ public class IncountManager : MonoBehaviour
 
     private void OnClick(InputAction.CallbackContext context)
     {
+        
+        //시작 체크 용도
+        if(textIndex < 0)
+        {
+            StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
+            TextIndex = 0;
+            lengthCount = 0;
+            return;
+        }
+
+        //선택지 확인 용도
         if (incountDatas[incountIndex].incountSession[textIndex].msgIndex != 0)
         {
             int choiseIndex = incountDatas[incountIndex].incountSession[textIndex].msgIndex;
-            ChoiseTMPUpdate(choiseDatas[choiseIndex].msg1, choiseDatas[choiseIndex].msg2, choiseDatas[choiseIndex].choiseList.Count);
+            ChoiseTMPUpdate(choiseDatas[choiseIndex]);
             return;
         }
+
+        ///중앙 텍스트 용도
         if (lengthCount == maxLengthCount)
         {
             lengthCount = 0;
-            GoNextText();
+            StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
         }
         else
         {
@@ -130,18 +148,26 @@ public class IncountManager : MonoBehaviour
 
     private void GoNextText()
     {
-        // StartCoroutine(FadeInCo(firstTMPCanvasGroup, false));
-        // StartCoroutine(FadeInCo(secondTMPCanvasGroup, false));
-        StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
-
     }
 
 
-    IEnumerator FadeInCo(CanvasGroup canvasGroup, bool fadeIn)
+    IEnumerator FadeInCo(CanvasGroup canvasGroup, bool fadeIn, bool isChoise = false)
     {
         float timer = 0f;
         float startAlpha = fadeIn ? 0f : 1f;
         float endAlpha = fadeIn ? 1f : 0f;
+        
+        if (fadeIn && !isChoise)
+        {
+            if (TextIndex % 2 == 0)
+                firstTMP.text = incountDatas[incountIndex].incountSession[textIndex].msg;
+            else
+            {
+                if (TextIndex != 0)
+                    secondTMP.text = incountDatas[incountIndex].incountSession[textIndex].msg;
+            }
+            TextIndex++;
+        }
 
         while (timer < transitionDuration)
         {
@@ -166,8 +192,10 @@ public class IncountManager : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        TMPUpdate();
+       // TMPUpdate();
     }
+
+    /*
     private void TMPUpdate()
     {
 
@@ -177,20 +205,21 @@ public class IncountManager : MonoBehaviour
         if (TextIndex == 0)
             return;
         secondTMP.text = incountDatas[incountIndex].incountSession[textIndex].msg;
-    }
+    }*/
 
 
-    private void ChoiseTMPUpdate(string msg1, string msg2, int count)
+    private void ChoiseTMPUpdate(ChoiseData selectChoise)
     {
-        firstTMP.text = msg1;
-        secondTMP.text = msg2;
+        // choiseDatas[choiseIndex].choiseList.Count
+        firstTMP.text = selectChoise.msg1;
+        secondTMP.text = selectChoise.msg2;
 
-        StartCoroutine(FadeInCo(firstTMPCanvasGroup, true));
-        StartCoroutine(FadeInCo(secondTMPCanvasGroup, true));
+        StartCoroutine(FadeInCo(firstTMPCanvasGroup, true, true));
+        StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, true));
 
-        for(int i = 0; i < count; i++)
+        for(int i = 0; i < selectChoise.choiseCount; i++)
         {
-
+            btnTMPs[i].text = selectChoise.choiseList[i];
         }
     }
 

@@ -6,10 +6,10 @@ using UnityEngine;
 public class ChoiseData : ScriptableObject
 {
     [SerializeField]
-    public int incountIndex = 0;
-    public int choiseCount = 0;
-    public string msg1 = string.Empty;
-    public string msg2 = string.Empty;
+    public int incountIndex = 0;        //현재 속한 인카운트
+    public int choiseCount = 0;         //선택지의 개수
+    public string msg1 = string.Empty;  //중앙 텍스트1
+    public string msg2 = string.Empty;  //중앙 텍스트2
 
-    public List<string> choiseList = new List<string>();
+    public List<string> choiseList = new List<string>();    //선택지의 개수에 맞게 선택지 지문 추가
 }
