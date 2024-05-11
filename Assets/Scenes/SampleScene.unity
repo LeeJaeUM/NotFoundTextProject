@@ -283,9 +283,25 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: buttons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
       propertyPath: transitionDuration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: incountDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: incountDatas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
+    - target: {fileID: 1924263183596767168, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
+      propertyPath: incountDatas.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4fb4c66d63d4ceb4f9d61dcca5635e80, type: 2}
     - target: {fileID: 2803457863453212378, guid: 1a29bf2e57e2d1643b0fc628617b2181, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

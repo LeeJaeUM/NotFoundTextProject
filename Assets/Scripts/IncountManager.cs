@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class IncountManager : MonoBehaviour
 {
     public IncountData[] incountDatas;
+    public ChoiseData[] choiseDatas;
 
     public string[] dividedStrings;
 
@@ -48,8 +49,7 @@ public class IncountManager : MonoBehaviour
     public TextMeshProUGUI firstTMP;
     public TextMeshProUGUI secondTMP;
 
-    public Button leftChoise;
-    public Button rightChoise;
+    public Button[] buttons = new Button[4];
 
     public TextMeshProUGUI leftButtonTMP;
     public TextMeshProUGUI rightButtonTMP;
@@ -71,8 +71,11 @@ public class IncountManager : MonoBehaviour
     }
     private void Awake()
     {
-        leftChoise.onClick.AddListener(() => OnLeftOptionClick());
-        rightChoise.onClick.AddListener(() => OnRightOptionClick());
+        buttons = GetComponentsInChildren<Button>(true);
+        buttons[0].onClick.AddListener(() => OnOneOptionClick());
+        buttons[1].onClick.AddListener(() => OnTwoOptionClick());
+        buttons[2].onClick.AddListener(() => OnThreeOptionClick());
+        buttons[3].onClick.AddListener(() => OnFourOptionClick());
         inputActions = new PlayerInputActions();
     }
 
@@ -89,10 +92,23 @@ public class IncountManager : MonoBehaviour
         maxTextIndex = incountDatas[incountIndex].incountSession.Count;
 
     }
+    /*            
+            foreach(var choise in choiseDatas)
+            {
+                if(choise.incountIndex == choiseIndex)
+                {
 
+                }
+            }*/
 
     private void OnClick(InputAction.CallbackContext context)
     {
+        if (incountDatas[incountIndex].incountSession[textIndex].msgIndex != 0)
+        {
+            int choiseIndex = incountDatas[incountIndex].incountSession[textIndex].msgIndex;
+            ChoiseTMPUpdate(choiseDatas[choiseIndex].msg1, choiseDatas[choiseIndex].msg2, choiseDatas[choiseIndex].choiseList.Count);
+            return;
+        }
         if (lengthCount == maxLengthCount)
         {
             lengthCount = 0;
@@ -164,11 +180,34 @@ public class IncountManager : MonoBehaviour
     }
 
 
-    public void OnLeftOptionClick()
+    private void ChoiseTMPUpdate(string msg1, string msg2, int count)
+    {
+        firstTMP.text = msg1;
+        secondTMP.text = msg2;
+
+        StartCoroutine(FadeInCo(firstTMPCanvasGroup, true));
+        StartCoroutine(FadeInCo(secondTMPCanvasGroup, true));
+
+        for(int i = 0; i < count; i++)
+        {
+
+        }
+    }
+
+
+    public void OnOneOptionClick()
     {
 
     }
-    public void OnRightOptionClick()
+    public void OnTwoOptionClick()
+    {
+
+    }
+    public void OnThreeOptionClick()
+    {
+
+    }
+    public void OnFourOptionClick()
     {
 
     }
