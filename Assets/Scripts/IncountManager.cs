@@ -28,6 +28,8 @@ public class IncountManager : MonoBehaviour
             selectChoiseNum = value;
             isChoise = false;
             ButtonFadeOut();
+            StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
+            TextIndex = 99;
         }
     }
 
@@ -69,6 +71,7 @@ public class IncountManager : MonoBehaviour
     public CanvasGroup secondTMPCanvasGroup;
 
     PlayerInputActions inputActions;
+
     private void OnEnable()
     {
         inputActions.Player.Enable();
@@ -80,6 +83,7 @@ public class IncountManager : MonoBehaviour
         inputActions.Player.Click.performed -= OnClick;
         inputActions.Player.Disable();
     }
+
     private void Awake()
     {
         Transform child = transform.GetChild(0);
@@ -98,6 +102,12 @@ public class IncountManager : MonoBehaviour
         foreach (var button in buttons)
         {
             button.interactable = false;
+        }
+
+        // 버튼 tmp 초기화
+        foreach (var tmp in btnTMPs)
+        {
+            tmp.text = string.Empty;
         }
 
         inputActions = new PlayerInputActions();
@@ -217,6 +227,10 @@ public class IncountManager : MonoBehaviour
     }
 
     #region Buttons
+    /// <summary>
+    /// 선택지 진입 시 바뀔 내용 : 중앙텍스트, 버튼 활성화
+    /// </summary>
+    /// <param name="selectChoise"></param>
     private void ChoiseTMPUpdate(ChoiseData selectChoise)
     {
         firstTMP.text = selectChoise.msg1;
@@ -225,6 +239,7 @@ public class IncountManager : MonoBehaviour
         StartCoroutine(FadeInCo(firstTMPCanvasGroup, true, true));
         StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, true));
 
+        ///버튼 활성화
         for (int i = 0; i < selectChoise.choiseCount; i++)
         {
             btnTMPs[i].text = selectChoise.choiseList[i];
@@ -235,15 +250,18 @@ public class IncountManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 버튼 입력 후 안 보이게 처리하는 함수
+    /// </summary>
     private void ButtonFadeOut()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
-
+            btnTMPs[i].text = string.Empty;     // 버튼 tmp 초기화
             StartCoroutine(FadeInCo(btnCanvasGroups[i], false, true));
         }
-        
+
     }
 
     public void OnOneOptionClick()

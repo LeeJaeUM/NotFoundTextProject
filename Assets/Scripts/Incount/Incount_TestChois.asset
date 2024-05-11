@@ -34,15 +34,3 @@ MonoBehaviour:
     msg: "Choise1\uB85C \uB118\uC5B4\uAC00\uB294 \uBD80"
     centerImage: {fileID: 0}
     audioIndex: 0
-  - msgIndex: 1
-    msg: "Choise1\uB85C \uB118\uC5B4\uAC00\uB294 \uBD80"
-    centerImage: {fileID: 0}
-    audioIndex: 0
-  - msgIndex: 0
-    msg: "\uB2E4\uC2DC\uD14D\uC2A4\uD2B8"
-    centerImage: {fileID: 0}
-    audioIndex: 0
-  - msgIndex: 0
-    msg: "\uC2DC\uB2E4\uD14D\uC2A4\uD2B8"
-    centerImage: {fileID: 0}
-    audioIndex: 0
