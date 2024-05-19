@@ -42,8 +42,8 @@ public class IncountManager : MonoBehaviour
                 isChoise = false;           //선택지 종료
                 ButtonFadeOut();
                 StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
+                TextIndex = 99; //최대값을 넘겨서 다음으로 넘김
             }
-            TextIndex = 99;
         }
     }
 

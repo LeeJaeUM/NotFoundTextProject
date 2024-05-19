@@ -1259,7 +1259,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incountDatas:
   - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
-  - {fileID: 11400000, guid: 4fb4c66d63d4ceb4f9d61dcca5635e80, type: 2}
+  - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
+  - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
+  - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
   - {fileID: 11400000, guid: 4fb4c66d63d4ceb4f9d61dcca5635e80, type: 2}
   choiseDatas:
   - {fileID: 11400000, guid: 80af5eb802429d045a6bf1275f7175e5, type: 2}
@@ -3314,11 +3316,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42820a767b830c40a6d8958a2f0805f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cerChoiseData: {fileID: 0}
   choise1:
   - {fileID: 11400000, guid: 99cfd5ffef25ed7438bc662ae55cdd82, type: 2}
   - {fileID: 11400000, guid: 802a3d7c755522e42a8516d2ea0cf233, type: 2}
   isChoisOn: 0
   lengthCount: 0
+  selectChoiseNum: -1
 --- !u!225 &7996101891375145255
 CanvasGroup:
   m_ObjectHideFlags: 0

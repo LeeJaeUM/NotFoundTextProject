@@ -104,7 +104,6 @@ public class ContinueIncount : MonoBehaviour
     public void TestFunc(int incountIndex, int choiseNum)
     {
         OnActive(true);             //자식 오브젝트 활성화 ---------후에 페이드인 처리----------
-        incountManager.ClickControll(false);
 
         uiBlur.BeginBlur(2.0f);     //블러 시작 처리
 
@@ -135,7 +134,6 @@ public class ContinueIncount : MonoBehaviour
     private void BackIncount()
     {
         OnActive(false);
-
     }
 
     public void OnOneOptionClick()
