@@ -1734,7 +1734,7 @@ GameObject:
   - component: {fileID: 3066559430276056157}
   - component: {fileID: 1924263183596767168}
   m_Layer: 0
-  m_Name: IncountManager
+  m_Name: IncountManager_old1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

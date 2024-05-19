@@ -39,10 +39,7 @@ public class IncountManager : MonoBehaviour
             }
             else
             {
-                isChoise = false;           //선택지 종료
-                ButtonFadeOut();
-                StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
-                TextIndex = 99; //최대값을 넘겨서 다음으로 넘김
+                EndChoise();
             }
         }
     }
@@ -86,6 +83,8 @@ public class IncountManager : MonoBehaviour
     public CanvasGroup firstTMPCanvasGroup;
     public CanvasGroup secondTMPCanvasGroup;
 
+    private ContinueIncount continueIncount;
+
     PlayerInputActions inputActions;
 
     private void OnEnable()
@@ -113,6 +112,8 @@ public class IncountManager : MonoBehaviour
 
     private void Awake()
     {
+        continueIncount = GetComponentInChildren<ContinueIncount>();
+        continueIncount.onEndChoise += EndChoise;
 
         Transform child = transform.GetChild(0);
         child = child.GetChild(1);
@@ -304,12 +305,22 @@ public class IncountManager : MonoBehaviour
         SelectChoiseNum = 3;
     }
     #endregion
-
+/*
     public void ClickControll(bool isOn)
     {
         if(isOn)
             OnEnable();
         else
             OnDisable();
+    }
+*/
+
+    private void EndChoise()
+    {
+        Debug.Log("인캉누트 종료");
+        isChoise = false;           //선택지 종료
+        ButtonFadeOut();
+        StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
+        TextIndex = 99; //최대값을 넘겨서 다음으로 넘김
     }
 }
