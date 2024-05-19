@@ -56,11 +56,3 @@ MonoBehaviour:
     msg: "\uBD84\uBA85 \uC5F4\uCC28\uB294 \uC6C0\uC9C1\uC774\uACE0 \uC788\uB294\uB370,,"
     centerImage: {fileID: 0}
     audioIndex: 0
-  - msgIndex: 0
-    msg: "\uC5EC\uC778\uC744 \uBC14\uB77C\uBCF4\uBA70 \uC190\uC744 \uD754\uB4E0\uB2E4."
-    centerImage: {fileID: 0}
-    audioIndex: 0
-  - msgIndex: 0
-    msg: "\uB2E4\uC2DC \uC55E\uC744 \uBCF4\uACE0 \uBAA8\uB978 \uCC99\uC744 \uD55C\uB2E4."
-    centerImage: {fileID: 0}
-    audioIndex: 0

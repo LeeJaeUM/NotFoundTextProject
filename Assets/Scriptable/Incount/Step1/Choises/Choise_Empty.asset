@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228ad3d06c103ff4c8c88220a188b077, type: 3}
   m_Name: Choise_Empty
   m_EditorClassIdentifier: 
-  incountIndex: 0
-  choiseCount: 0
-  msg1: 
-  msg2: 
+  incountIndex: 1
+  choiseCount: 1
+  msg1: "\uBE48 \uC120\uD0DD\uC9C0"
+  msg2: "\uB098\uB3C4 \uB9C8\uCC2C\uAE30\uC9C0\uC9C0"
   choiseList: []

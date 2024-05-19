@@ -1,3 +1,4 @@
+using Krivodeling.UI.Effects;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ public class IncountManager : MonoBehaviour
     public CanvasGroup[] btnCanvasGroups = new CanvasGroup[4];
 
     public bool isChoise = false;           //선택지 진입 확인 bool 변수
+    public bool isContinuous = false;
+
+    public Action<int> onContinue;
 
     //몇 번 선택지인지 알리는 변수
     [SerializeField]
@@ -26,9 +30,16 @@ public class IncountManager : MonoBehaviour
         set
         {
             selectChoiseNum = value;
-            isChoise = false;
-            ButtonFadeOut();
-            StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
+            if (isContinuous)
+            {
+                onContinue(selectChoiseNum);
+            }
+            else
+            {
+                isChoise = false;           //선택지 종료
+                ButtonFadeOut();
+                StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
+            }
             TextIndex = 99;
         }
     }
@@ -88,6 +99,7 @@ public class IncountManager : MonoBehaviour
 
     private void Awake()
     {
+
         Transform child = transform.GetChild(0);
         child = child.GetChild(1);
         child = child.GetChild(2);
