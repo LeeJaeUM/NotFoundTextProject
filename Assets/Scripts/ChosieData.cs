@@ -11,5 +11,7 @@ public class ChoiseData : ScriptableObject
     public string msg1 = string.Empty;  //중앙 텍스트1
     public string msg2 = string.Empty;  //중앙 텍스트2
 
+    public bool[] isContinues = null; 
+
     public List<string> choiseList = new List<string>();    //선택지의 개수에 맞게 선택지 지문 추가
 }

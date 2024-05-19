@@ -17,22 +17,25 @@ public class IncountManager : MonoBehaviour
     public CanvasGroup[] btnCanvasGroups = new CanvasGroup[4];
 
     public bool isChoise = false;           //선택지 진입 확인 bool 변수
-    public bool isContinuous = false;
+    public bool isCon = false;              // 연속 선택지인지 확인
+    public bool[] isContinues = new bool[4];// 선택지가 연속 선택지인지 ChoiseData에서 받음
+    public int choiseIndex = 0;
 
-    public Action<int> onContinue;
+    public Action<int, int> onContinue;
 
     //몇 번 선택지인지 알리는 변수
     [SerializeField]
-    private int selectChoiseNum = 0;
+    private int selectChoiseNum = -1;
     public int SelectChoiseNum
     {
         get => selectChoiseNum;
         set
         {
             selectChoiseNum = value;
-            if (isContinuous)
+            isCon = isContinues[selectChoiseNum] ? true : false;
+            if (isCon)
             {
-                onContinue(selectChoiseNum);
+                onContinue(choiseIndex, selectChoiseNum);
             }
             else
             {
@@ -97,6 +100,17 @@ public class IncountManager : MonoBehaviour
         inputActions.Player.Disable();
     }
 
+    private void OnClick(InputAction.CallbackContext context)
+    {
+        if (!isChoise)
+            DefaultLog();
+        else
+        {
+
+            Debug.Log(selectChoiseNum);
+        }
+    }
+
     private void Awake()
     {
 
@@ -141,17 +155,6 @@ public class IncountManager : MonoBehaviour
 
     }
 
-
-    private void OnClick(InputAction.CallbackContext context)
-    {
-        if(!isChoise)
-            DefaultLog();
-        else
-        {
-
-            Debug.Log(selectChoiseNum);
-        }
-    }
 
     private void DefaultLog()
     {
@@ -255,6 +258,8 @@ public class IncountManager : MonoBehaviour
         StartCoroutine(FadeInCo(firstTMPCanvasGroup, true, true));
         StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, true));
 
+        choiseIndex = selectChoise.incountIndex;
+
         ///버튼 활성화
         for (int i = 0; i < selectChoise.choiseCount; i++)
         {
@@ -263,6 +268,8 @@ public class IncountManager : MonoBehaviour
             //필요한 버튼만 입력 활성화 및 보이게 하기
             StartCoroutine(FadeInCo(btnCanvasGroups[i], true, true));
             buttons[i].interactable = true;
+
+            isContinues[i] = selectChoise.isContinues[i];
         }
     }
 
@@ -282,21 +289,27 @@ public class IncountManager : MonoBehaviour
 
     public void OnOneOptionClick()
     {
-        SelectChoiseNum = 1;
+        SelectChoiseNum = 0;
     }
     public void OnTwoOptionClick()
     {
-        SelectChoiseNum = 2;
+        SelectChoiseNum = 1;
     }
     public void OnThreeOptionClick()
     {
-        SelectChoiseNum = 3;
+        SelectChoiseNum = 2;
     }
     public void OnFourOptionClick()
     {
-        SelectChoiseNum = 4;
+        SelectChoiseNum = 3;
     }
     #endregion
 
-
+    public void ClickControll(bool isOn)
+    {
+        if(isOn)
+            OnEnable();
+        else
+            OnDisable();
+    }
 }
