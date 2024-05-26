@@ -12,9 +12,9 @@ public class IncountManager : MonoBehaviour
 {
     public IncountData[] incountDatas;
     public ChoiseData[] choiseDatas;
-    public Button[] buttons = new Button[4];
-    public TextMeshProUGUI[] btnTMPs = new TextMeshProUGUI[4];
-    public CanvasGroup[] btnCanvasGroups = new CanvasGroup[4];
+    private Button[] buttons = new Button[4];
+    private TextMeshProUGUI[] btnTMPs = new TextMeshProUGUI[4];
+    private CanvasGroup[] btnCanvasGroups = new CanvasGroup[4];
 
     public bool isChoise = false;           //선택지 진입 확인 bool 변수
     public bool isCon = false;              // 연속 선택지인지 확인
@@ -44,7 +44,7 @@ public class IncountManager : MonoBehaviour
         }
     }
 
-    public float transitionDuration = 1f;   // 변화에 걸리는 시간
+    public float transitionDuration = 0.5f;   // 변화에 걸리는 시간
     public float currentValue = 0;          // 페이드 인/아웃에 쓰는 변수
 
     //현재 인카운트의 몇번째 텍스트인지 판단하는 숫자
@@ -77,11 +77,11 @@ public class IncountManager : MonoBehaviour
     //현재 인카운트의 넘버
     public int incountIndex = 0;
 
-    public TextMeshProUGUI firstTMP;
-    public TextMeshProUGUI secondTMP;
+    private TextMeshProUGUI firstTMP;
+    private TextMeshProUGUI secondTMP;
 
-    public CanvasGroup firstTMPCanvasGroup;
-    public CanvasGroup secondTMPCanvasGroup;
+    private CanvasGroup firstTMPCanvasGroup;
+    private CanvasGroup secondTMPCanvasGroup;
 
     private ContinueIncount continueIncount;
 
@@ -112,32 +112,41 @@ public class IncountManager : MonoBehaviour
 
     private void Awake()
     {
+        //연속 선택지 델리게이트 연결
         continueIncount = GetComponentInChildren<ContinueIncount>();
         continueIncount.onEndChoise += EndChoise;
 
+        // 컴포넌트 위치 찾기
         Transform child = transform.GetChild(0);
         child = child.GetChild(1);
+        Transform centerC = child.GetChild(1);
+
         child = child.GetChild(2);
         btnTMPs = child.GetComponentsInChildren<TextMeshProUGUI>(true);
         buttons = child.GetComponentsInChildren<Button>(true);
         btnCanvasGroups = child.GetComponentsInChildren<CanvasGroup>(true);
 
+        //리스너 연결
         buttons[0].onClick.AddListener(() => OnOneOptionClick());
         buttons[1].onClick.AddListener(() => OnTwoOptionClick());
         buttons[2].onClick.AddListener(() => OnThreeOptionClick());
         buttons[3].onClick.AddListener(() => OnFourOptionClick());
 
-        //시작 시 버튼 입력 제한 걸기
-        foreach (var button in buttons)
+        //시작 시 버튼 제한, 초기화, 안 보이게 처리
+        for (int i = 0; i < buttons.Length; i++)
         {
-            button.interactable = false;
+            btnCanvasGroups[i].alpha = 0;
+            buttons[i].interactable = false;
+            btnTMPs[i].text = string.Empty;
         }
 
-        // 버튼 tmp 초기화
-        foreach (var tmp in btnTMPs)
-        {
-            tmp.text = string.Empty;
-        }
+        Transform c1 = centerC.GetChild(0);
+        firstTMP = c1.GetComponent<TextMeshProUGUI>();
+        firstTMPCanvasGroup = c1.GetComponent<CanvasGroup>();   
+
+        Transform c2 = centerC.GetChild(1);
+        secondTMP = c2.GetComponent<TextMeshProUGUI>();
+        secondTMPCanvasGroup = c2.GetComponent<CanvasGroup>();
 
         inputActions = new PlayerInputActions();
     }
@@ -253,6 +262,7 @@ public class IncountManager : MonoBehaviour
     /// <param name="selectChoise"></param>
     private void ChoiseTMPUpdate(ChoiseData selectChoise)
     {
+        Debug.Log($"{selectChoise.name}은 이 선택지의 이름, 선택지는 {selectChoise.choiseCount} 개");
         firstTMP.text = selectChoise.msg1;
         secondTMP.text = selectChoise.msg2;
 
@@ -264,7 +274,9 @@ public class IncountManager : MonoBehaviour
         ///버튼 활성화
         for (int i = 0; i < selectChoise.choiseCount; i++)
         {
+            Debug.Log($"i는 {i}");
             btnTMPs[i].text = selectChoise.choiseList[i];
+
 
             //필요한 버튼만 입력 활성화 및 보이게 하기
             StartCoroutine(FadeInCo(btnCanvasGroups[i], true, true));

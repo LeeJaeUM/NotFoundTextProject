@@ -173,7 +173,14 @@ public class ContinueIncount : MonoBehaviour
 
     public void TestFunc(int incountIndex, int choiseNum)
     {
-        isChoisOn = true;   
+        isChoisOn = true;
+
+        //텍스트 안 보이게 처리
+        firstTMPCanvasGroup.alpha = 0;
+        secondTMPCanvasGroup.alpha = 0;
+        lastFirstTMPCanvasGroup.alpha = 0;
+        lastSecondTMPCanvasGroup.alpha = 0;
+
         OnActive(true);             //자식 오브젝트 활성화 ---------후에 페이드인 처리----------
         uiBlur.BeginBlur(2.0f);     //블러 시작 처리
 
@@ -246,6 +253,13 @@ public class ContinueIncount : MonoBehaviour
             StartCoroutine(FadeInCo(firstTMPCanvasGroup, true));
 
             StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, 0.8f));
+
+            //모든 버튼 안 보이게 처리
+            for(int i = 0; i < btnCanvasGroups.Length; i++)
+            {
+                btnCanvasGroups[i].alpha = 0;
+            }
+
             ///버튼 활성화
             for (int i = 0; i < selectChoise.choiseCount; i++)
             {
