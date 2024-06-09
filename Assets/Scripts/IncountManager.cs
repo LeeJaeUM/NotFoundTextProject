@@ -62,6 +62,8 @@ public class IncountManager : MonoBehaviour
                 if(maxTextIndex % 2 != 0)
                     secondTMP.text = string.Empty;  
                 textIndex = -1;
+
+                //다음 인카운트로 넘어감
                 incountIndex++;
                 maxTextIndex = incountDatas[incountIndex].incountSession.Count;
             }
@@ -331,6 +333,8 @@ public class IncountManager : MonoBehaviour
     {
         Debug.Log("인캉누트 종료");
         isChoise = false;           //선택지 종료
+        isCon = false;
+        isContinues = new bool[4];
         ButtonFadeOut();
         StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
         TextIndex = 99; //최대값을 넘겨서 다음으로 넘김

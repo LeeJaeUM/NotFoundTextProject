@@ -1772,10 +1772,6 @@ MonoBehaviour:
   lengthCount: 0
   maxLengthCount: 2
   incountIndex: 0
-  firstTMP: {fileID: 0}
-  secondTMP: {fileID: 0}
-  firstTMPCanvasGroup: {fileID: 0}
-  secondTMPCanvasGroup: {fileID: 0}
 --- !u!225 &1966753489616597007
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3650,7 +3646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42820a767b830c40a6d8958a2f0805f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cerChoiseData: {fileID: 0}
   cerChoise: []
   cerIncountIndex: 0
   cerChoiseIndex: 0
@@ -3658,7 +3653,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 99cfd5ffef25ed7438bc662ae55cdd82, type: 2}
   - {fileID: 11400000, guid: 802a3d7c755522e42a8516d2ea0cf233, type: 2}
   selectChoiseNum: -1
-  isChoisOn: 1
+  isChoisOn: 0
+  isLastClick: 0
 --- !u!225 &7996101891375145255
 CanvasGroup:
   m_ObjectHideFlags: 0

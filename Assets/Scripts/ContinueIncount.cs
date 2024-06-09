@@ -10,10 +10,9 @@ using UnityEngine.UI;
 public class ContinueIncount : MonoBehaviour
 {
     [Header("현재 선택지 관련")]
-    public ChoiseData cerChoiseData = null;
-    public ChoiseData[] cerChoise = null;
-    public int cerIncountIndex = 0;
+    //현재 추가 선택지의 인덱스 확인
     public int cerChoiseIndex = 0;
+    public ChoiseData[] cerChoise = null;
 
     [Header("선택지들")]
     public ChoiseData[] choise1 = null;
@@ -23,7 +22,9 @@ public class ContinueIncount : MonoBehaviour
     [SerializeField] private int selectChoiseNum = -1;
 
     // /// 마지막 선택지 없는 choiseData는 클릭후 다음 인카운트로 넘어간다고 알림
-    public bool isChoisOn = true;
+    public bool isChoisOn = false;
+    public bool isLastClick = false;
+    public bool isCon = false;
 
     private IncountManager incountManager;
     private UIBlur uiBlur = null;
@@ -46,7 +47,8 @@ public class ContinueIncount : MonoBehaviour
     private CanvasGroup lastSecondTMPCanvasGroup;
 
     // ---------위치------------------
-    private CanvasGroup thisCanvasGroup;
+    //처음에 자신의 alpha를 0으로 만들고 추ㅏㄱ 선택지 떴을때 1로 초기화
+    [SerializeField]private CanvasGroup thisCanvasGroup;
     private RectTransform blurRect;
 
     Transform child0;    //Blur Image
@@ -60,7 +62,12 @@ public class ContinueIncount : MonoBehaviour
         set
         {
             selectChoiseNum = value;
-            bool isCon = cerChoise[cerChoiseIndex].isContinues[selectChoiseNum] ? true : false;
+
+            //cerChoise가 null일때의 예외처리 추가
+            if(cerChoise == null)
+                isCon = false;
+            else
+                isCon = cerChoise[cerChoiseIndex].isContinues[selectChoiseNum] ? true : false;
             if (isCon)
             {
                 cerChoiseIndex++;
@@ -90,20 +97,35 @@ public class ContinueIncount : MonoBehaviour
     }
 
     /// <summary>
-    /// 눌렀을 때 isChoisOn이 true라면 다음 인카운트로 넘어가는 액션 발동
+    /// 눌렀을 때 isLastClick이 true라면 다음 인카운트로 넘어가는 액션 발동
     /// </summary>
     /// <param name="context"></param>
     private void OnClick(InputAction.CallbackContext context)
     {
-        if (!isChoisOn)
+        if (isLastClick)
         {
-            EndIncount();
-            onEndChoise?.Invoke();
+            EndChoise();
+            OnActive(false);
         }
-        else
-        {
-            Debug.Log("dfsdsds");
-        }
+    }
+
+    private void EndChoise()
+    {
+        //추가 선택지 인카운트 종료
+        isLastClick = false;
+        uiBlur.EndBlur(2.0f);       //블러 종료 처리
+        cerChoiseIndex = 0;
+        cerChoise = null;
+        DelayAlpha(1f);
+        onEndChoise?.Invoke();
+    }
+
+    IEnumerator DelayAlpha(float delay)
+    {
+        Debug.Log("dsds");
+        yield return new WaitForSeconds(delay);
+        thisCanvasGroup.alpha = 0;
+        Debug.Log("싫ㅇ했어");
     }
 
     private void Awake()
@@ -112,7 +134,8 @@ public class ContinueIncount : MonoBehaviour
         incountManager = GetComponentInParent<IncountManager>();
         incountManager.onContinue += TestFunc;
         uiBlur = GetComponentInChildren<UIBlur>();
-        thisCanvasGroup = GetComponent<CanvasGroup>();  
+        thisCanvasGroup = this.GetComponent<CanvasGroup>();
+        thisCanvasGroup.alpha = 0.0f;
     }
 
     private void Start()
@@ -174,12 +197,9 @@ public class ContinueIncount : MonoBehaviour
     public void TestFunc(int incountIndex, int choiseNum)
     {
         isChoisOn = true;
-
+        thisCanvasGroup.alpha = 1.0f;
         //텍스트 안 보이게 처리
-        firstTMPCanvasGroup.alpha = 0;
-        secondTMPCanvasGroup.alpha = 0;
-        lastFirstTMPCanvasGroup.alpha = 0;
-        lastSecondTMPCanvasGroup.alpha = 0;
+        AllCanvasAlpha_Zero();
 
         OnActive(true);             //자식 오브젝트 활성화 ---------후에 페이드인 처리----------
         uiBlur.BeginBlur(2.0f);     //블러 시작 처리
@@ -202,6 +222,26 @@ public class ContinueIncount : MonoBehaviour
 
     }
 
+    private void AllCanvasAlpha_Zero()
+    {
+        firstTMPCanvasGroup.alpha = 0;
+        secondTMPCanvasGroup.alpha = 0;
+        lastFirstTMPCanvasGroup.alpha = 0;
+        lastSecondTMPCanvasGroup.alpha = 0;
+    }
+    private void AllCanvasAlpha_Zero_Co()
+    {
+        firstTMPCanvasGroup.alpha = 0;
+        secondTMPCanvasGroup.alpha = 0;
+        lastFirstTMPCanvasGroup.alpha = 0;
+        lastSecondTMPCanvasGroup.alpha = 0;
+        for (int i = 0; i < btnCanvasGroups.Length; i++)
+        {
+            StopAllCoroutines();
+            FadeInCo(btnCanvasGroups[i], false);
+        }
+
+    }
     private void OnActive(bool isOn)
     {
         if (isOn)
@@ -213,13 +253,6 @@ public class ContinueIncount : MonoBehaviour
             BlurUpDown(2000);
         }
         child1.gameObject.SetActive(isOn);
-
-    }
-
-    private void EndIncount()
-    {
-        uiBlur.EndBlur(2.0f);       //블러 종료 처리
-        StartCoroutine( FadeInCo_EndIncount(thisCanvasGroup, false));
 
     }
 
@@ -283,6 +316,7 @@ public class ContinueIncount : MonoBehaviour
             StartCoroutine(FadeInCo(lastSecondTMPCanvasGroup, true, 0.8f));
             /// 마지막 선택지 없는 choiseData는 클릭후 다음 인카운트로 넘어간다고 알림
             isChoisOn = false;
+            isLastClick = true;
         }
     }
 
@@ -302,25 +336,9 @@ public class ContinueIncount : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-    }
-    IEnumerator FadeInCo_EndIncount(CanvasGroup canvasGroup, bool fadeIn, float delay = 0, float duration = 1)
-    {
-        yield return new WaitForSeconds(delay);
 
-        float timer = 0f;
-        float startAlpha = fadeIn ? 0f : 1f;
-        float endAlpha = fadeIn ? 1f : 0f;
-
-        while (timer < duration)
-        {
-            float currentValue = Mathf.Lerp(startAlpha, endAlpha, timer / duration);
-            canvasGroup.alpha = currentValue;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        //종료 후 비활성화
-        OnActive(false);
+        //if (canvasGroup == thisCanvasGroup && fadeIn == false)
+        //    thisCanvasGroup.alpha = 0;
     }
 
     /// <summary>
@@ -344,7 +362,7 @@ public class ContinueIncount : MonoBehaviour
             float currentValue = Mathf.Lerp(startAlpha, endAlpha, timer / duration);
             foreach(var canvas in btnCanvasGroups)
             {
-                if(canvas == canvasGroup)
+                if(canvas == canvasGroup || canvas.alpha == 0)
                 {
                     continue;
                 }
