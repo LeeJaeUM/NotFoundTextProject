@@ -23,6 +23,8 @@ public class IncountManager : MonoBehaviour
 
     public Action<int, int> onContinue;
 
+    public Action<int> onSFXPlay;
+
     //몇 번 선택지인지 알리는 변수
     [SerializeField]
     private int selectChoiseNum = -1;
@@ -47,6 +49,8 @@ public class IncountManager : MonoBehaviour
     public float transitionDuration = 0.5f;   // 변화에 걸리는 시간
     public float currentValue = 0;          // 페이드 인/아웃에 쓰는 변수
 
+    public int curSfxIndex = 0;
+
     //현재 인카운트의 몇번째 텍스트인지 판단하는 숫자
     public int textIndex = 2;
     public int TextIndex
@@ -55,6 +59,14 @@ public class IncountManager : MonoBehaviour
         set
         {
             textIndex = value;
+
+            //음향 출력
+            if(textIndex > 0 && textIndex < 98)
+            {
+                curSfxIndex = incountDatas[incountIndex].incountSession[textIndex - 1].audioIndex;
+                onSFXPlay?.Invoke(curSfxIndex);
+                //AudioManager.instance.PlaySfx((AudioManager.Sfx)curSfxIndex);
+            }
 
             //현재 인카운트의 텍스트를 전부 표현한 뒤라면
             if (textIndex >= maxTextIndex)
