@@ -315,7 +315,7 @@ public class ContinueIncount : MonoBehaviour
         }
         else
         {
-            BlurUpDown(2000);
+            BlurUpDown(3000);
             StartCoroutine(SlowFadeOut());
         }
 
