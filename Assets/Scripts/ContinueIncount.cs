@@ -55,6 +55,9 @@ public class ContinueIncount : MonoBehaviour
     private CanvasGroup lastFirstTMPCanvasGroup;
     private CanvasGroup lastSecondTMPCanvasGroup;
 
+    [SerializeField]
+    private TextMeshProUGUI[] diaTMPs = new TextMeshProUGUI[4];
+
     // ---------위치------------------
     //처음에 자신의 alpha를 0으로 만들고 추ㅏㄱ 선택지 떴을때 1로 초기화
     [SerializeField]private CanvasGroup thisCanvasGroup;
@@ -92,6 +95,8 @@ public class ContinueIncount : MonoBehaviour
     }
 
     PlayerInputActions inputActions;
+
+    public Action<int, string> onDialogues;
 
     private void OnEnable()
     {
@@ -194,6 +199,10 @@ public class ContinueIncount : MonoBehaviour
         blurRect = child0.GetComponent<RectTransform>();
         BlurUpDown(2000);
 
+        diaTMPs[0] = firstTMP;
+        diaTMPs[1] = secondTMP;
+        diaTMPs[2] = lastFirstTMP;
+        diaTMPs[3] = lastSecondTMP;
     }
 
     private void BlurUpDown(float range)
@@ -318,9 +327,9 @@ public class ContinueIncount : MonoBehaviour
             firstTMP.text = selectChoise.msg1;
             secondTMP.text = selectChoise.msg2;
 
-            StartCoroutine(FadeInCo(firstTMPCanvasGroup, true));
+            StartCoroutine(FadeInCo(firstTMPCanvasGroup, true,0,1,0));
 
-            StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, textFloatTime));
+            StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, textFloatTime,1,1));
 
             //모든 버튼 안 보이게 처리
             for(int i = 0; i < btnCanvasGroups.Length; i++)
@@ -331,7 +340,7 @@ public class ContinueIncount : MonoBehaviour
             ///버튼 활성화
             for (int i = 0; i < selectChoise.choiseCount; i++)
             {
-                btnTMPs[i].text = selectChoise.choiseList[i];
+                btnTMPs[i].text = selectChoise.choiseList[i]; 
 
                 //필요한 버튼만 입력 활성화 및 보이게 하기
                 StartCoroutine(FadeInCo(btnCanvasGroups[i], true, i * 0.2f));
@@ -346,9 +355,9 @@ public class ContinueIncount : MonoBehaviour
             lastFirstTMP.text = selectChoise.msg1;
             lastSecondTMP.text = selectChoise.msg2;
 
-            StartCoroutine(FadeInCo(lastFirstTMPCanvasGroup, true));
+            StartCoroutine(FadeInCo(lastFirstTMPCanvasGroup, true,0,1,2));
 
-            StartCoroutine(FadeInCo(lastSecondTMPCanvasGroup, true, textFloatTime));
+            StartCoroutine(FadeInCo(lastSecondTMPCanvasGroup, true, textFloatTime,1,3));
 
             if(selectChoise.continuousIndex < 990)
             {
@@ -366,9 +375,23 @@ public class ContinueIncount : MonoBehaviour
     }
 
 
-    IEnumerator FadeInCo(CanvasGroup canvasGroup, bool fadeIn, float delay = 0, float duration = 1)
+    IEnumerator FadeInCo(CanvasGroup canvasGroup, bool fadeIn, float delay = 0, float duration = 1, int tmpNum = -1)
     {
         yield return new WaitForSeconds(delay);
+
+        bool isTMP = false;
+        for(int i = 0; i < btnCanvasGroups.Length; i++)
+        {
+            if (canvasGroup != btnCanvasGroups[i])
+            {
+                isTMP = true;
+            }
+
+        }
+        if(isTMP && tmpNum > -1)
+        {
+            onDialogues?.Invoke(tmpNum, diaTMPs[tmpNum].text);
+        }
 
         float timer = 0f;
         float startAlpha = fadeIn ? 0f : 1f;
