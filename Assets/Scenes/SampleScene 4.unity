@@ -1809,8 +1809,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a53619b463a8364aa57da4de36c0ffe, type: 2}
   - {fileID: 11400000, guid: 7eeb3f865892b564596c9604f4fae19b, type: 2}
   - {fileID: 11400000, guid: 13fe50328f452a147831d93b5564b0a1, type: 2}
-  - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
-  - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
+  - {fileID: 11400000, guid: e4d9454311bc2c240838a3738dda5a73, type: 2}
+  - {fileID: 11400000, guid: 1042fb78dbad3634eacb543bd194a819, type: 2}
+  - {fileID: 11400000, guid: d6ed860a57af40848a08485a755c7feb, type: 2}
+  - {fileID: 11400000, guid: 9bffb858d1110fb4f95ea8ac56c820fb, type: 2}
   - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
   choiseDatas:
   - {fileID: 11400000, guid: 80af5eb802429d045a6bf1275f7175e5, type: 2}
@@ -1818,6 +1820,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f3c634b4e7e45240ad15bc3b022f94f, type: 2}
   - {fileID: 11400000, guid: a8772c6e2b89a1f479eb6e12bf2564a6, type: 2}
   - {fileID: 11400000, guid: 34d100662c6cdc147aead8b70206529f, type: 2}
+  - {fileID: 11400000, guid: 735693c1c0bdfd54ebcb5d292f919cc3, type: 2}
+  - {fileID: 11400000, guid: 10c7ade3e9204f248a683103f46a95d2, type: 2}
+  - {fileID: 11400000, guid: 10c7ade3e9204f248a683103f46a95d2, type: 2}
   isChoise: 0
   isCon: 0
   isContinues: 00000000
@@ -1830,7 +1835,7 @@ MonoBehaviour:
   maxTextIndex: 0
   lengthCount: 0
   maxLengthCount: 2
-  incountIndex: 5
+  incountIndex: 0
 --- !u!225 &1966753489616597007
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3730,7 +3735,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a397f133c9cd45f4089f58ff2805a990, type: 2}
   choise3:
   - {fileID: 11400000, guid: d47db798ade588d4cb22dd28425970d3, type: 2}
+  - {fileID: 11400000, guid: ed885b31a35c57a49938922ca369526a, type: 2}
   - {fileID: 11400000, guid: e056adb9093b45146952664c6dc3fb2e, type: 2}
+  - {fileID: 11400000, guid: 4c64d96f98a4ea04a931b88f5d64a2f5, type: 2}
   choise4:
   - {fileID: 11400000, guid: ce3959a0d9fba1546ab8b5c02703d4f9, type: 2}
   - {fileID: 11400000, guid: 1fc7c133890595440b89fb9316e3e95e, type: 2}
@@ -3738,8 +3745,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd709ea75325dcf4b9c71dcfac892a3c, type: 2}
   - {fileID: 11400000, guid: 94ce833a36e43d143b3db8bbde56e698, type: 2}
   - {fileID: 11400000, guid: 593135fc13414c44fb533149e31baebf, type: 2}
-  choise5: []
-  choise6: []
+  choise5:
+  - {fileID: 11400000, guid: e2c91790e34fa3844aa99c47d452580d, type: 2}
+  - {fileID: 11400000, guid: 4a97f8c59568bf4429fba33d084716c8, type: 2}
+  - {fileID: 11400000, guid: d98f6550eb5c7af49a7a06fa3a0c9d5a, type: 2}
+  - {fileID: 11400000, guid: 2c2a58a122f75cb41b3239fe74d7987c, type: 2}
+  choise6:
+  - {fileID: 11400000, guid: f0569bfe309713c4cad43bbcfb315424, type: 2}
+  - {fileID: 11400000, guid: f3c3a516f34bdbe41ac27f5bd793e20d, type: 2}
+  - {fileID: 11400000, guid: f7a9364475c907f46bf64401253ec6c7, type: 2}
+  - {fileID: 11400000, guid: 509ba007ec34e364faa6edc02bc8a043, type: 2}
   choise7: []
   choise8: []
   selectChoiseNum: -1

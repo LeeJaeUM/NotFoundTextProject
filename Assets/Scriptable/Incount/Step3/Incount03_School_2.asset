@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3239fec636d81847969fc1ed30553f9, type: 3}
+  m_Name: Incount03_School_2
+  m_EditorClassIdentifier: 
+  incountCode: 1
+  incountSession:
+  - choiseIndex: 0
+    msg: "\uADF8 \uC21C\uAC04 \uC5B4\uB514\uC120\uAC00 \uBD88\uC5B4\uC624\uB294 \uBC14\uB78C\uC5D0
+      \uB2EC\uCF64\uD55C \uD5A5\uC774 \uC740\uC740\uD788 \uD37C\uC9C0\uBA70"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uB204\uAD70\uAC00\uC758 \uC2DC\uC120\uC774 \uB290\uAEF4\uC838\uC11C \uB098\uB294
+      \uC870\uC6A9\uD788 \uACE0\uAC1C\uB97C \uB4E4\uC5C8\uB2E4."
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uCC3E\uC558\uB2E4!"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: ' '
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uB098\uB294 \uAE5C\uC9DD \uB180\uB77C\uBA70 \uB4A4\uB85C \uB118\uC5B4\uC84C\uB2E4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uC21C\uAC04 \uAD50\uC2E4\uC758 \uBAA8\uB4E0 \uC774\uBAA9\uC774 \uC9D1\uC911\uB418\uC5C8\uACE0
+      \uB098\uB294 \uBE60\uB974\uAC8C \uC790\uB9AC\uC5D0 \uC549\uC558\uB2E4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uADF8\uB140\uB294 \uB2F9\uD669\uD55C \uD45C\uC815\uC73C\uB85C \uB9D0\uD588\uB2E4."
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uBBF8\uC548! \uAE5C\uC791 \uB180\uB798\uD0AC \uC0DD\uAC01\uC774\uAE34
+      \uD588\uB294\uB370, \uB108\uAC00 \uC774\uB807\uAC8C \uB9AC\uC561\uC158\uC774
+      \uC88B\uC744 \uC904\uC740 \uBAB0\uB790\uC5B4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 5
+    msg: "5\uBC88 \uC120\uD0DD\uC9C0"
+    centerImage: {fileID: 0}
+    audioIndex: 0

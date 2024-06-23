@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3239fec636d81847969fc1ed30553f9, type: 3}
+  m_Name: Incount03_School_4
+  m_EditorClassIdentifier: 
+  incountCode: 1
+  incountSession:
+  - choiseIndex: 0
+    msg: "\uB098\uB294 \uD55C\uC228\uC744 \uB0B4\uBC49\uC73C\uBA74\uC11C \uADF8\uB140\uC5D0\uAC8C
+      \uC870\uC6A9\uD788 \uBB3C\uC5B4\uBCF4\uC558\uB2E4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uADF8\uB7FC \uC774\uC81C \uC5B4\uB5BB\uAC8C \uB418\uB294 \uAC70\uC57C?"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uB0B4\uAC00 \uC5EC\uAE30\uC5D0 \uC65C \uC788\uB294\uC9C0, \uB0B4 \uC774\uB984\uC740
+      \uBB54\uC9C0, \uC65C \uB098\uB294 \uB108\uC5D0\uAC8C\uB9CC \uBCF4\uC774\uB294\uC9C0"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uBAA8\uB4E0\uAC8C \uC758\uBB38\uD22C\uC131\uC774\uB124"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uADF8\uB798\uB3C4 \uD558\uB098 \uD655\uC2E4\uD55C \uAC8C \uC788\uC5B4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uADF8\uAC8C \uBB34\uC5C7\uC774\uB358 \uB098\uB294 \uB108\uC5D0\uAC8C \uB04C\uB9BC\uC744
+      \uB290\uB080\uB2E4\uB294 \uAC70\uC57C."
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uADF8\uB140\uC758 \uB9D0\uC5D0 \uB0B4 \uC5BC\uAD74\uC740 \uBD89\uC5B4\uC84C\uB2E4.
+      \uB098\uB294 \uBCFC\uC744 \uAF2C\uC9D1\uC5C8\uB2E4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uC774\uAC83\uC774 \uAFC8\uC778\uC9C0 \uC544\uB2CC\uC9C0 \uB9C8\uC9C0\uB9C9\uC73C\uB85C
+      \uD655\uC778\uD574\uC57C \uD588\uB2E4. "
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uD558\uC9C0\uB9CC \uAF2C\uC9D1\uC740 \uBCFC\uC740 \uC804\uD600 \uC544\uD504\uC9C0
+      \uC54A\uC558\uB2E4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uC5B4?"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uC5ED\uC2DC \uAFC8\uC774\uC5C8\uAD6C\uB098."
+    centerImage: {fileID: 0}
+    audioIndex: 0
