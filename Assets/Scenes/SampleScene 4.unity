@@ -1806,12 +1806,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fb4c66d63d4ceb4f9d61dcca5635e80, type: 2}
   - {fileID: 11400000, guid: c61e7141df4d97a48a50310f748447c0, type: 2}
   - {fileID: 11400000, guid: 20512bb1e48d19f4496385be72095721, type: 2}
+  - {fileID: 11400000, guid: 8a53619b463a8364aa57da4de36c0ffe, type: 2}
+  - {fileID: 11400000, guid: 7eeb3f865892b564596c9604f4fae19b, type: 2}
+  - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
+  - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
   - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
   - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
   choiseDatas:
   - {fileID: 11400000, guid: 80af5eb802429d045a6bf1275f7175e5, type: 2}
   - {fileID: 11400000, guid: da896125d70b0fc42bb6ca91309cdc8c, type: 2}
   - {fileID: 11400000, guid: 2f3c634b4e7e45240ad15bc3b022f94f, type: 2}
+  - {fileID: 11400000, guid: a8772c6e2b89a1f479eb6e12bf2564a6, type: 2}
   isChoise: 0
   isCon: 0
   isContinues: 00000000
@@ -3714,11 +3719,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42820a767b830c40a6d8958a2f0805f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cerChoiseIndex: 0
-  cerChoise: []
+  curChoiseIndex: 0
+  curChoise: []
   choise1:
   - {fileID: 11400000, guid: 99cfd5ffef25ed7438bc662ae55cdd82, type: 2}
   - {fileID: 11400000, guid: 802a3d7c755522e42a8516d2ea0cf233, type: 2}
+  choise2:
+  - {fileID: 11400000, guid: 79854c6aa9536774f809d70739c5fc11, type: 2}
+  - {fileID: 11400000, guid: a397f133c9cd45f4089f58ff2805a990, type: 2}
+  choise3:
+  - {fileID: 11400000, guid: d47db798ade588d4cb22dd28425970d3, type: 2}
+  - {fileID: 11400000, guid: e056adb9093b45146952664c6dc3fb2e, type: 2}
   selectChoiseNum: -1
   isChoisOn: 0
   isLastClick: 0

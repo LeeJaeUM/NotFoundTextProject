@@ -38,7 +38,7 @@ public class ContinueIncount : MonoBehaviour
     private CanvasGroup firstTMPCanvasGroup;
     private CanvasGroup secondTMPCanvasGroup;
 
-    private Button[] buttons = new Button[4];
+    [SerializeField]private Button[] buttons = new Button[4];
     private TextMeshProUGUI[] btnTMPs = new TextMeshProUGUI[4];
     private CanvasGroup[] btnCanvasGroups = new CanvasGroup[4];
 

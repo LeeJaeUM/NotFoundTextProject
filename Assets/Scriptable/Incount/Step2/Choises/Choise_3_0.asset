@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228ad3d06c103ff4c8c88220a188b077, type: 3}
   m_Name: Choise_3_0
   m_EditorClassIdentifier: 
-  incountIndex: 1
+  continuousIndex: 3
   choiseCount: 2
   msg1: "\uAC11\uC791\uC2A4\uB7EC\uC6B4 \uC5EC\uC778\uC758 \uBAA9\uC18C\uB9AC\uC5D0
     \uB098\uB294 \uB180\uB77C \uB4A4\uB85C \uB118\uC5B4\uC84C\uB2E4"
