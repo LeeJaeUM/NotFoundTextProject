@@ -1808,7 +1808,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20512bb1e48d19f4496385be72095721, type: 2}
   - {fileID: 11400000, guid: 8a53619b463a8364aa57da4de36c0ffe, type: 2}
   - {fileID: 11400000, guid: 7eeb3f865892b564596c9604f4fae19b, type: 2}
-  - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
+  - {fileID: 11400000, guid: 13fe50328f452a147831d93b5564b0a1, type: 2}
   - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
   - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
   - {fileID: 11400000, guid: c397ad2b50d87094788f7fe5392c3117, type: 2}
@@ -1817,6 +1817,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da896125d70b0fc42bb6ca91309cdc8c, type: 2}
   - {fileID: 11400000, guid: 2f3c634b4e7e45240ad15bc3b022f94f, type: 2}
   - {fileID: 11400000, guid: a8772c6e2b89a1f479eb6e12bf2564a6, type: 2}
+  - {fileID: 11400000, guid: 34d100662c6cdc147aead8b70206529f, type: 2}
   isChoise: 0
   isCon: 0
   isContinues: 00000000
@@ -1829,7 +1830,7 @@ MonoBehaviour:
   maxTextIndex: 0
   lengthCount: 0
   maxLengthCount: 2
-  incountIndex: 0
+  incountIndex: 5
 --- !u!225 &1966753489616597007
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3730,10 +3731,26 @@ MonoBehaviour:
   choise3:
   - {fileID: 11400000, guid: d47db798ade588d4cb22dd28425970d3, type: 2}
   - {fileID: 11400000, guid: e056adb9093b45146952664c6dc3fb2e, type: 2}
+  choise4:
+  - {fileID: 11400000, guid: ce3959a0d9fba1546ab8b5c02703d4f9, type: 2}
+  - {fileID: 11400000, guid: 1fc7c133890595440b89fb9316e3e95e, type: 2}
+  - {fileID: 11400000, guid: 9c56bc06775ec6b4e8bfdd6c4e65ebfe, type: 2}
+  - {fileID: 11400000, guid: bd709ea75325dcf4b9c71dcfac892a3c, type: 2}
+  - {fileID: 11400000, guid: 94ce833a36e43d143b3db8bbde56e698, type: 2}
+  - {fileID: 11400000, guid: 593135fc13414c44fb533149e31baebf, type: 2}
+  choise5: []
+  choise6: []
+  choise7: []
+  choise8: []
   selectChoiseNum: -1
   isChoisOn: 0
   isLastClick: 0
   isCon: 0
+  buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   thisCanvasGroup: {fileID: 0}
 --- !u!225 &7996101891375145255
 CanvasGroup:

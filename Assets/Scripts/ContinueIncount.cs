@@ -18,6 +18,11 @@ public class ContinueIncount : MonoBehaviour
     public ChoiseData[] choise1 = null;
     public ChoiseData[] choise2 = null;
     public ChoiseData[] choise3 = null;
+    public ChoiseData[] choise4 = null;
+    public ChoiseData[] choise5 = null;
+    public ChoiseData[] choise6 = null;
+    public ChoiseData[] choise7 = null;
+    public ChoiseData[] choise8 = null;
 
     [Header("변수")]    
     //몇 번 버튼을 눌렀는지 알리는 변수
@@ -30,6 +35,8 @@ public class ContinueIncount : MonoBehaviour
 
     private IncountManager incountManager;
     private UIBlur uiBlur = null;
+
+    private float textFloatTime = 0.6f;
 
     // --------------TMPe들 ----------------------
     private TextMeshProUGUI firstTMP;
@@ -66,13 +73,13 @@ public class ContinueIncount : MonoBehaviour
             selectChoiseNum = value;
 
             //curChoise가 null일때의 예외처리 추가
-            if(curChoise == null)
+            if(curChoise == null) //|| curChoise[curChoiseIndex].continuousIndex > 900
                 isCon = false;
             else
                 isCon = curChoise[curChoiseIndex].isContinues[selectChoiseNum] ? true : false;
             if (isCon)
             {
-                curChoiseIndex++;
+                curChoiseIndex = curChoise[curChoiseIndex].continuousIndex;
                 // 선택지의 후 내용이 나옴
                 ChoiseTMPUpdate(curChoise[curChoiseIndex]);
             }
@@ -196,7 +203,7 @@ public class ContinueIncount : MonoBehaviour
         blurRect.anchoredPosition = currentPos;
     }
 
-    public void TestFunc(int incountIndex, int choiseNum)
+    public void TestFunc(int choiseIndex, int selectBtnNum)
     {
         isChoisOn = true;
         thisCanvasGroup.alpha = 1.0f;
@@ -206,8 +213,8 @@ public class ContinueIncount : MonoBehaviour
         OnActive(true);             //자식 오브젝트 활성화 ---------후에 페이드인 처리----------
         uiBlur.BeginBlur(2.0f);     //블러 시작 처리
 
-        curChoiseIndex = choiseNum;
-        switch (incountIndex)
+        curChoiseIndex = selectBtnNum;
+        switch (choiseIndex)
         {
             case 1:
                 //curChoiseData = choise1[0];
@@ -218,8 +225,22 @@ public class ContinueIncount : MonoBehaviour
                 break;
             case 3:
                 curChoise = choise3;
-                break;  
-
+                break;
+            case 4:
+                curChoise = choise4;
+                break;
+            case 5:
+                curChoise = choise5;
+                break;
+            case 6:
+                curChoise = choise6;
+                break;
+            case 7:
+                curChoise = choise7;
+                break;
+            case 8:
+                curChoise = choise8;
+                break;
         }
 
         ChoiseTMPUpdate(curChoise[curChoiseIndex]);
@@ -279,6 +300,16 @@ public class ContinueIncount : MonoBehaviour
         SelectChoiseNum = 3;
     }
 
+    /// <summary>
+    /// 잠시 후 다시 원래 선택지로 돌아가게 하기 위함
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SlowBack()
+    {
+        yield return new WaitForSeconds(2.0f);
+        OnActive(false);
+    }
+
     private void ChoiseTMPUpdate(ChoiseData selectChoise)
     {
         // 선택지가 비어있지 않다면 -- 후속선택지가 있다면
@@ -289,7 +320,7 @@ public class ContinueIncount : MonoBehaviour
 
             StartCoroutine(FadeInCo(firstTMPCanvasGroup, true));
 
-            StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, 0.8f));
+            StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, textFloatTime));
 
             //모든 버튼 안 보이게 처리
             for(int i = 0; i < btnCanvasGroups.Length; i++)
@@ -317,10 +348,20 @@ public class ContinueIncount : MonoBehaviour
 
             StartCoroutine(FadeInCo(lastFirstTMPCanvasGroup, true));
 
-            StartCoroutine(FadeInCo(lastSecondTMPCanvasGroup, true, 0.8f));
-            /// 마지막 선택지 없는 choiseData는 클릭후 다음 인카운트로 넘어간다고 알림
-            isChoisOn = false;
-            isLastClick = true;
+            StartCoroutine(FadeInCo(lastSecondTMPCanvasGroup, true, textFloatTime));
+
+            if(selectChoise.continuousIndex < 990)
+            {
+                // 이전 선택지로 돌아감
+                StartCoroutine(SlowBack());   
+            }
+            else
+            {
+                /// 마지막 선택지 없는 choiseData는 클릭후 다음 인카운트로 넘어간다고 알림
+                isChoisOn = false;
+                isLastClick = true;
+            }
+
         }
     }
 

@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 228ad3d06c103ff4c8c88220a188b077, type: 3}
-  m_Name: Choise_2_1_1
+  m_Name: Choise_3_1
   m_EditorClassIdentifier: 
-  continuousIndex: 999
+  incountIndex: 0
   choiseCount: 2
-  msg1: "\uC544\uB2C8\uC57C. \uC774\uAC74 \uB9D0\uC774 \uC548\uB3FC. \uC9C0\uAE08
-    \uC774 \uC0C1\uD669 \uC790\uCCB4\uAC00 \uB9D0\uC774 \uC548\uB3FC! "
-  msg2: "\uC694\uC998 \uB9CE\uC774 \uD53C\uACE4\uD588\uB358 \uBAA8\uC591\uC774\uC57C"
-  isContinues: 
-  choiseList: []
+  msg1: "\uC9C4\uC9DC\uB85C? \uB9CE\uC774 \uC544\uD50C \uAC70 \uAC19\uC740\uB370?"
+  msg2: ' '
+  isContinues: 0100
+  choiseList:
+  - "\uB0B4 \uBEA8 \uC544\uB2C8\uB2C8\uAE4C"
+  - "\uC0DD\uAC01\uD574\uBCF4\uB2C8 \uADF8\uB7EC\uB124"

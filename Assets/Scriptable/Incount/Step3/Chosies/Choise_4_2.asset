@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 228ad3d06c103ff4c8c88220a188b077, type: 3}
-  m_Name: Choise_2_1_1
+  m_Name: Choise_4_2
   m_EditorClassIdentifier: 
-  continuousIndex: 999
+  continuousIndex: 3
   choiseCount: 2
-  msg1: "\uC544\uB2C8\uC57C. \uC774\uAC74 \uB9D0\uC774 \uC548\uB3FC. \uC9C0\uAE08
-    \uC774 \uC0C1\uD669 \uC790\uCCB4\uAC00 \uB9D0\uC774 \uC548\uB3FC! "
-  msg2: "\uC694\uC998 \uB9CE\uC774 \uD53C\uACE4\uD588\uB358 \uBAA8\uC591\uC774\uC57C"
-  isContinues: 
-  choiseList: []
+  msg1: "\uADF8\uAC74 \uB098\uB3C4 \uC798 \uBAA8\uB974\uACA0\uC5B4. \uD558\uC9C0\uB9CC
+    \uD655\uC2E4\uD55C \uBD80\uBD84\uC740"
+  msg2: "\uB0B4 \uD3C9\uBC94\uD55C \uC77C\uC0C1\uC5D0 \uADF8\uB7F0 \uC774\uBCA4\uD2B8\uB294
+    \uD544\uC694 \uC5C6\uB2E4\uB294 \uAC70\uC57C. "
+  isContinues: 0100
+  choiseList:
+  - "\uC65C?"
+  - "\uC54C\uACA0\uC5B4."

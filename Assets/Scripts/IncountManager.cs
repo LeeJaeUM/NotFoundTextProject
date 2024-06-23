@@ -213,8 +213,8 @@ public class IncountManager : MonoBehaviour
         if (incountDatas[incountIndex].incountSession[textIndex].choiseIndex != 0)
         {
             onChoiseStart?.Invoke();
-            int choiseIndex = incountDatas[incountIndex].incountSession[textIndex].choiseIndex;
-            ChoiseTMPUpdate(choiseDatas[choiseIndex]);
+            int _choiseIndex = incountDatas[incountIndex].incountSession[textIndex].choiseIndex;
+            ChoiseTMPUpdate(choiseDatas[_choiseIndex]);
 
             //선택지에 진입한 것을 확인하는
             isChoise = true;
