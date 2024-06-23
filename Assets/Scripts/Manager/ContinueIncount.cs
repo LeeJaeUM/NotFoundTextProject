@@ -239,7 +239,7 @@ public class ContinueIncount : MonoBehaviour
         tempTMPObj = Instantiate(testTMPInstant, incountManager.BtnTMPs[selectBtnNum].transform.position, Quaternion.identity);
         TextMeshProUGUI inTMP = tempTMPObj.GetComponent<TextMeshProUGUI>();   
         inTMP.text = incountManager.BtnTMPs[selectBtnNum].text;
-        inTMP.fontSize = 16;
+        inTMP.fontSize = 42;
 
         float newX = incountManager.BtnTMPs[selectBtnNum].GetComponent<RectTransform>().anchoredPosition.x;
         float newY = incountManager.BtnTMPs[selectBtnNum].GetComponent<RectTransform>().anchoredPosition.y;

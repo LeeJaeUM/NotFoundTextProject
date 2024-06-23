@@ -85,6 +85,21 @@ public class IncountManager : MonoBehaviour
                 incountIndex++;
                 maxTextIndex = incountDatas[incountIndex].incountSession.Count;
             }
+
+            ///deepBreath 발동
+            if (incountIndex == 3 && TextIndex == 5)
+            {
+                onDeepBreath?.Invoke();
+            }
+
+            if (incountIndex == 8 && TextIndex == 10)
+            {
+                onChagneColor?.Invoke(true);
+            }
+            if (incountIndex == 9 && TextIndex == -1)
+            {
+                onChagneColor?.Invoke(false);
+            }
         }
     }
 
@@ -105,6 +120,7 @@ public class IncountManager : MonoBehaviour
                 else if(lengthCount == 2)
                     onLengthCountPush?.Invoke(lengthCount, secondTMP.text);
             }
+
         }
     }
     public Action<int, string> onLengthCountPush;
@@ -116,12 +132,17 @@ public class IncountManager : MonoBehaviour
     public int incountIndex = 0;
 
     private TextMeshProUGUI firstTMP;
+    public TextMeshProUGUI FirstTMP => firstTMP;
     private TextMeshProUGUI secondTMP;
+    public TextMeshProUGUI SecondTMP => secondTMP;
 
     private CanvasGroup firstTMPCanvasGroup;
     private CanvasGroup secondTMPCanvasGroup;
 
     private ContinueIncount continueIncount;
+
+    public Action onDeepBreath;
+    public Action<bool> onChagneColor;
 
     PlayerInputActions inputActions;
 
@@ -155,11 +176,11 @@ public class IncountManager : MonoBehaviour
         continueIncount.onEndChoise += EndChoise;
 
         // 컴포넌트 위치 찾기
-        Transform child = transform.GetChild(0);
-        child = child.GetChild(1);
-        Transform centerC = child.GetChild(1);
+        Transform child = transform.GetChild(0); // Canvas
+        child = child.GetChild(2);               //DialoguGroup
+        Transform centerC = child.GetChild(1);   //Center
 
-        child = child.GetChild(2);
+        child = child.GetChild(2);                  //Option
         btnTMPs = child.GetComponentsInChildren<TextMeshProUGUI>(true);
         buttons = child.GetComponentsInChildren<Button>(true);
         btnCanvasGroups = child.GetComponentsInChildren<CanvasGroup>(true);
