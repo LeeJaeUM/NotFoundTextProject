@@ -6,13 +6,13 @@ using UnityEngine.InputSystem;
 
 public class TestDia : MonoBehaviour
 {
-    public TextMeshProUGUI textMeshProUGUI;
+    public TextMeshProUGUI textTMP;
 
     private PlayerInputActions inputActions;
     public float stepDelay = 0.8f;
     private void Awake()
     {
-        textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+        textTMP = GetComponent<TextMeshProUGUI>();
         inputActions = new PlayerInputActions();
     }
 
@@ -34,21 +34,21 @@ public class TestDia : MonoBehaviour
         Settings();
     }
 
-    void Settings()
+    public void Settings()
     {
-        StartCoroutine(TypeText(textMeshProUGUI.text));
+        StartCoroutine(TypeText(textTMP.text));
     }
 
     private IEnumerator TypeText(string text)
     { 
         
-        textMeshProUGUI.text = ""; // 기존 텍스트 초기화
+        textTMP.text = ""; // 기존 텍스트 초기화
         string currentText = "";
 
         foreach (char letter in text)
         {
             currentText += letter;
-            textMeshProUGUI.text = currentText;
+            textTMP.text = currentText;
             yield return new WaitForSeconds(stepDelay);
         }
 

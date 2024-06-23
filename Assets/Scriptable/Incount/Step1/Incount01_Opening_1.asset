@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3239fec636d81847969fc1ed30553f9, type: 3}
+  m_Name: Incount01_Opening_1
+  m_EditorClassIdentifier: 
+  incountCode: 1
+  incountSession:
+  - choiseIndex: 0
+    msg: "\uB35C\uCEF9\uAC70\uB9AC\uB294 \uC804\uCCA0\uC774\uB2E4. \uC9D1\uC5D0\uC11C
+      \uB2E4\uC18C \uAC70\uB9AC\uAC00 \uBA3C \uD559\uAD50\uC5D0 \uBC30\uC815\uBC1B\uC544"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uB098\uB294 \uB9E4\uC77C \uC804\uCCA0\uC744 \uD0C0\uACE0 \uB4F1\uAD50\uB97C
+      \uD558\uACE0 \uC788\uB2E4. "
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uBD84\uBA85 \uC5B4\uC81C\uAE4C\uC9C0\uB9CC \uD574\uB3C4 \uC9C0\uAE08 \uC774
+      \uC2DC\uAC04\uC774\uBA74 \uCE68\uB300\uC5D0\uC11C \uC7A0\uC744 \uC790\uACE0
+      \uC788\uC5C8\uC744 \uD150\uB370."
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: " \uD558,, \uD559\uAD50 \uAC00\uAE30 \uB108\uBB34 \uC2EB\uB2E4."
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uCD9C\uADFC \uC2DC\uAC04\uACFC \uB4F1\uAD50 \uC2DC\uAC04\uC774 \uACB9\uCE5C
+      \uC9C0\uD558\uCCA0 \uC548\uC740 \uC0AC\uB78C\uC73C\uB85C \uBD90\uBCD0\uB2E4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uB098\uB294 \uACB0\uAD6D \uD53C\uACE4\uD55C \uBAB8\uC744 \uCD9C\uC785\uBB38\uC5D0
+      \uAE30\uB300 \uC7A0\uC2DC \uB208\uC744 \uAC10\uC558\uB2E4."
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uB611 \uB611 \uB611"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: " \uCD9C\uC785\uBB38 \uBC16\uC5D0\uC11C \uB204\uAD70\uAC00 \uBB38\uC744
+      \uB450\uB4DC\uB9AC\uB294 \uC18C\uB9AC\uAC00 \uB4E4\uB838\uB2E4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: " \uB098\uBB47\uAC00\uC9C0\uB098 \uC2F6\uC5C8\uB358 \uB098\uB294 \uC790\uC5F0\uC801\uC73C\uB85C
+      \uC77C\uC5B4\uB0A0 \uC218 \uC5C6\uB294 \uB9AC\uB4EC\uC5D0 \uB4A4\uB3CC\uC544\uBCF4\uC558\uB2E4. "
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uCC3D \uBC16\uC73C\uB85C\uB294 \uD55C \uC5EC\uC778\uC774 \uB098\uC640
+      \uAC19\uC774 \uCD9C\uC785\uBB38\uC5D0 \uAE30\uB300"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uD478\uB978 \uB208\uC744 \uAFC8\uBED1\uC774\uBA70 \uB098\uB97C \uBC14\uB77C\uBCF4\uACE0
+      \uC788\uC5C8\uB2E4. "
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 2
+    msg: "2\uBC88\uC9F8 \uC120\uD0DD\uC9C0"
+    centerImage: {fileID: 0}
+    audioIndex: 0

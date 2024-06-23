@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class MsgData
 {
-    public int msgIndex;
+    public int choiseIndex;
     public string msg;
     public Sprite centerImage;
     public int audioIndex;

@@ -14,23 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incountCode: 0
   incountSession:
-  - msgIndex: 0
+  - choiseIndex: 0
     msg: "\uD14C\uD2B8\uC2A4\uC785\uB2C8"
     centerImage: {fileID: 0}
     audioIndex: 1
-  - msgIndex: 0
+  - choiseIndex: 0
     msg: "\uD14C\uD2B8\uC2A4\uC785\uB2C8\uB2E42"
     centerImage: {fileID: 0}
     audioIndex: 2
-  - msgIndex: 0
+  - choiseIndex: 0
     msg: "\uD14C\uD2B8\uC2A4\uC785\uB2C8\uB2E43"
     centerImage: {fileID: 0}
     audioIndex: 0
-  - msgIndex: 0
+  - choiseIndex: 0
     msg: "\uD14C\uD2B8\uC2A4\uC785\uB2C8\uB2E442"
     centerImage: {fileID: 0}
     audioIndex: 3
-  - msgIndex: 1
+  - choiseIndex: 1
     msg: "Choise1\uB85C \uB118\uC5B4\uAC00\uB294 \uBD80"
     centerImage: {fileID: 0}
     audioIndex: 4

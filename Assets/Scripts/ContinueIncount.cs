@@ -11,11 +11,13 @@ public class ContinueIncount : MonoBehaviour
 {
     [Header("현재 선택지 관련")]
     //현재 추가 선택지의 인덱스 확인
-    public int cerChoiseIndex = 0;
-    public ChoiseData[] cerChoise = null;
+    public int curChoiseIndex = 0;
+    public ChoiseData[] curChoise = null;
 
     [Header("선택지들")]
     public ChoiseData[] choise1 = null;
+    public ChoiseData[] choise2 = null;
+    public ChoiseData[] choise3 = null;
 
     [Header("변수")]    
     //몇 번 버튼을 눌렀는지 알리는 변수
@@ -63,16 +65,16 @@ public class ContinueIncount : MonoBehaviour
         {
             selectChoiseNum = value;
 
-            //cerChoise가 null일때의 예외처리 추가
-            if(cerChoise == null)
+            //curChoise가 null일때의 예외처리 추가
+            if(curChoise == null)
                 isCon = false;
             else
-                isCon = cerChoise[cerChoiseIndex].isContinues[selectChoiseNum] ? true : false;
+                isCon = curChoise[curChoiseIndex].isContinues[selectChoiseNum] ? true : false;
             if (isCon)
             {
-                cerChoiseIndex++;
+                curChoiseIndex++;
                 // 선택지의 후 내용이 나옴
-                ChoiseTMPUpdate(cerChoise[cerChoiseIndex]);
+                ChoiseTMPUpdate(curChoise[curChoiseIndex]);
             }
             else
             {
@@ -114,8 +116,8 @@ public class ContinueIncount : MonoBehaviour
         //추가 선택지 인카운트 종료
         isLastClick = false;
         uiBlur.EndBlur(2.0f);       //블러 종료 처리
-        cerChoiseIndex = 0;
-        cerChoise = null;
+        curChoiseIndex = 0;
+        curChoise = null;
         DelayAlpha(1f);
         onEndChoise?.Invoke();
     }
@@ -204,21 +206,23 @@ public class ContinueIncount : MonoBehaviour
         OnActive(true);             //자식 오브젝트 활성화 ---------후에 페이드인 처리----------
         uiBlur.BeginBlur(2.0f);     //블러 시작 처리
 
-        cerChoiseIndex = choiseNum;
+        curChoiseIndex = choiseNum;
         switch (incountIndex)
         {
             case 1:
-                //cerChoiseData = choise1[0];
-                cerChoise = choise1;
+                //curChoiseData = choise1[0];
+                curChoise = choise1;
                 break;
             case 2:
+                curChoise = choise2;
                 break;
             case 3:
+                curChoise = choise3;
                 break;  
 
         }
 
-        ChoiseTMPUpdate(cerChoise[cerChoiseIndex]);
+        ChoiseTMPUpdate(curChoise[curChoiseIndex]);
 
     }
 
@@ -278,7 +282,7 @@ public class ContinueIncount : MonoBehaviour
     private void ChoiseTMPUpdate(ChoiseData selectChoise)
     {
         // 선택지가 비어있지 않다면 -- 후속선택지가 있다면
-        if(selectChoise.incountIndex < 900)
+        if(selectChoise.continuousIndex < 900)
         {
             firstTMP.text = selectChoise.msg1;
             secondTMP.text = selectChoise.msg2;

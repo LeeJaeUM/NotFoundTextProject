@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3239fec636d81847969fc1ed30553f9, type: 3}
+  m_Name: Incount02_School_1
+  m_EditorClassIdentifier: 
+  incountCode: 1
+  incountSession:
+  - choiseIndex: 0
+    msg: "\uC9C0\uD558\uCCA0\uC5ED \uBC16\uC73C\uB85C \uB098\uC628 \uB098\uB294 \uD638\uD761\uC744
+      \uAC00\uB2E4\uB4EC\uC73C\uBA70 \uD63C\uC7A3\uB9D0\uC744 \uD588\uB2E4"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uC800\uAC74 \uC9C4\uC9DC\uAC00 \uC544\uB2C8\uC57C. \uC800\uAC74 \uAC00\uC9DC\uC57C!"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uADF8\uB0E5 \uB108\uAC00 \uB9CE\uC774 \uD798\uB4E4\uC5B4\uC11C \uADF8\uB7F0
+      \uAC70\uC57C"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uC870\uC6A9\uD788 \uB208\uC744 \uAC10\uACE0 \uC228\uC744 \uAC00\uB2E4\uB4EC\uC73C\uBA74,
+      \uC774 \uBAA8\uB4E0 \uC77C\uC774 \uC0AC\uB77C\uC9C8 \uAC70\uC57C"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uB4E4\uC774\uB9C8\uC2DC\uACE0 \uB0B4\uBC49\uACE0, \uB4E4\uC774\uB9C8\uC2DC\uACE0
+      \uB0B4\uBC49\uACE0, \uD734..."
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: '  '
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 0
+    msg: "\uB108 \uC5EC\uAE30\uC11C \uBB50\uD558\uB0D0?"
+    centerImage: {fileID: 0}
+    audioIndex: 0
+  - choiseIndex: 3
+    msg: "3\uBC88\uC9F8 \uC120\uD0DD\uC9C0"
+    centerImage: {fileID: 0}
+    audioIndex: 0

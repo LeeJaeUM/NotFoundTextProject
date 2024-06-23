@@ -17,39 +17,39 @@ MonoBehaviour:
   - msgIndex: 0
     msg: " \uB108,, \uB0B4\uAC00 \uBCF4\uC774\uB2C8?"
     centerImage: {fileID: 0}
-    audioIndex: 0
+    audioIndex: 1
   - msgIndex: 0
     msg: " \uD639\uC2DC \uB0B4\uAC00 \uBCF4\uC778\uB2E4\uBA74 \uB300\uB2F5\uD574\uC918"
     centerImage: {fileID: 0}
-    audioIndex: 1
+    audioIndex: 2
   - msgIndex: 0
     msg: " \uC774 \uC138\uC0C1\uC5D0\uC11C \uB098\uB97C \uBCFC \uC218 \uC788\uB294
       \uC874\uC7AC\uB294"
     centerImage: {fileID: 0}
-    audioIndex: 2
+    audioIndex: 3
   - msgIndex: 0
     msg: " \uB108 \uD558\uB098\uBFD0\uC774\uC57C. "
     centerImage: {fileID: 0}
-    audioIndex: 3
+    audioIndex: 4
   - msgIndex: 0
     msg: "\uBBFF\uC5B4\uB3C4 \uB3FC. \uC9C4\uC9DC \uC804 \uC138\uACC4\uB97C \uB4A4\uC84C\uC73C\uB2C8\uAE4C."
     centerImage: {fileID: 0}
-    audioIndex: 4
+    audioIndex: 5
   - msgIndex: 0
     msg: "\uC774\uC81C,, \uB098\uB294 \uB108\uB85C\uC11C \uC874\uC7AC\uD560 \uC218
       \uC788\uB294 \uAC70\uC57C "
     centerImage: {fileID: 0}
-    audioIndex: 5
+    audioIndex: 6
   - msgIndex: 0
     msg: "\uB2E4\uB978\uB9D0\uB85C\uB294 \uB108 \uC5C6\uC774 \uB098\uB294 \uC758\uBBF8\uAC00
       \uC5C6\uC5B4\uC9C4\uB2E4\uB294 \uAC70\uC9C0"
     centerImage: {fileID: 0}
-    audioIndex: 6
+    audioIndex: 7
   - msgIndex: 0
     msg: "\uADF8\uB7EC\uBA74 \uB2E4\uC2DC \uD55C\uBC88 \uBB3C\uC5B4\uBCFC\uAC8C"
     centerImage: {fileID: 0}
-    audioIndex: 7
+    audioIndex: 8
   - msgIndex: 0
     msg: "\uB108 \uB0B4\uAC00 \uBCF4\uC774\uB2C8?"
     centerImage: {fileID: 0}
-    audioIndex: 8
+    audioIndex: 9

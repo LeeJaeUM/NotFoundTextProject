@@ -86,6 +86,24 @@ public class IncountManager : MonoBehaviour
 
     //텍스트를 두 개로 나누어서 표시하기 위한 카운트
     public int lengthCount = 0;
+    public int LengthCount
+    {
+        get => lengthCount;
+        set
+        {
+            if(lengthCount != value)
+            {
+                lengthCount = value;
+                if (lengthCount == 1)
+                    onLengthCountPush?.Invoke(lengthCount, firstTMP.text);
+                else if(lengthCount == 2)
+                    onLengthCountPush?.Invoke(lengthCount, secondTMP.text);
+            }
+        }
+    }
+    public Action<int, string> onLengthCountPush;
+    public Action onChoiseStart;
+
     public int maxLengthCount = 2;
 
     //현재 인카운트의 넘버
@@ -187,14 +205,15 @@ public class IncountManager : MonoBehaviour
         {
             StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
             TextIndex = 0;
-            lengthCount = 0;
+            LengthCount = 0;
             return;
         }
 
         //선택지 확인 용도
-        if (incountDatas[incountIndex].incountSession[textIndex].msgIndex != 0)
+        if (incountDatas[incountIndex].incountSession[textIndex].choiseIndex != 0)
         {
-            int choiseIndex = incountDatas[incountIndex].incountSession[textIndex].msgIndex;
+            onChoiseStart?.Invoke();
+            int choiseIndex = incountDatas[incountIndex].incountSession[textIndex].choiseIndex;
             ChoiseTMPUpdate(choiseDatas[choiseIndex]);
 
             //선택지에 진입한 것을 확인하는
@@ -206,7 +225,7 @@ public class IncountManager : MonoBehaviour
         ///중앙 텍스트 용도
         if (lengthCount == maxLengthCount)
         {
-            lengthCount = 0;
+            LengthCount = 0;
             StartCoroutine(FadeOutCo(firstTMPCanvasGroup, secondTMPCanvasGroup));
         }
         else
@@ -219,7 +238,7 @@ public class IncountManager : MonoBehaviour
             {
                 StartCoroutine(FadeInCo(secondTMPCanvasGroup, true));
             }
-            lengthCount++;
+            LengthCount++;
         }
     }
 
@@ -283,7 +302,7 @@ public class IncountManager : MonoBehaviour
         StartCoroutine(FadeInCo(firstTMPCanvasGroup, true, true));
         StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, true));
 
-        choiseIndex = selectChoise.incountIndex;
+        choiseIndex = selectChoise.continuousIndex;
 
         ///버튼 활성화
         for (int i = 0; i < selectChoise.choiseCount; i++)
