@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Choise_3_2
   m_EditorClassIdentifier: 
   continuousIndex: 3
-  choiseCount: 2
+  choiseCount: 1
   msg1: "\uD760, \uC57D\uAC04 \uBCC0\uD0DC\uCC98\uB7FC \uB290\uAEF4\uC9C8 \uC218
     \uC788\uC9C0\uB9CC \uC5B4\uCA54 \uC218 \uC5C6\uC9C0!"
   msg2: ' '

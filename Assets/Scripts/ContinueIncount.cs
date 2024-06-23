@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
+using static UnityEngine.GraphicsBuffer;
 
 public class ContinueIncount : MonoBehaviour
 {
@@ -58,6 +60,8 @@ public class ContinueIncount : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI[] diaTMPs = new TextMeshProUGUI[4];
 
+    private CanvasGroup dialougeGroupCG;
+
     // ---------위치------------------
     //처음에 자신의 alpha를 0으로 만들고 추ㅏㄱ 선택지 떴을때 1로 초기화
     [SerializeField]private CanvasGroup thisCanvasGroup;
@@ -97,6 +101,9 @@ public class ContinueIncount : MonoBehaviour
     PlayerInputActions inputActions;
 
     public Action<int, string> onDialogues;
+
+    public GameObject testTMPInstant;
+    public GameObject tempTMPObj;
 
     private void OnEnable()
     {
@@ -146,7 +153,7 @@ public class ContinueIncount : MonoBehaviour
     {
         inputActions = new PlayerInputActions();
         incountManager = GetComponentInParent<IncountManager>();
-        incountManager.onContinue += TestFunc;
+        incountManager.onContinue += ConChoiseStartFunc;
         uiBlur = GetComponentInChildren<UIBlur>();
         thisCanvasGroup = this.GetComponent<CanvasGroup>();
         thisCanvasGroup.alpha = 0.0f;
@@ -156,6 +163,7 @@ public class ContinueIncount : MonoBehaviour
     {
 
         child1 = transform.GetChild(1);    //DIalogueGroup (1)
+        dialougeGroupCG = child1.GetComponent<CanvasGroup>();   
         Transform h_child = child1.GetChild(0);      //Center
         Transform g_child = h_child.GetChild(0);
         firstTMP = g_child.GetComponent<TextMeshProUGUI>();
@@ -212,12 +220,33 @@ public class ContinueIncount : MonoBehaviour
         blurRect.anchoredPosition = currentPos;
     }
 
-    public void TestFunc(int choiseIndex, int selectBtnNum)
+    //-------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------주요 함수 액션 받음-------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// IncountManager에서 선택지 클릭이 액션이 넘어온걸 받는 함수
+    /// </summary>
+    /// <param name="choiseIndex"></param>
+    /// <param name="selectBtnNum"></param>
+    public void ConChoiseStartFunc(int choiseIndex, int selectBtnNum)
     {
         isChoisOn = true;
         thisCanvasGroup.alpha = 1.0f;
         //텍스트 안 보이게 처리
         AllCanvasAlpha_Zero();
+
+        tempTMPObj = Instantiate(testTMPInstant, incountManager.BtnTMPs[selectBtnNum].transform.position, Quaternion.identity);
+        TextMeshProUGUI inTMP = tempTMPObj.GetComponent<TextMeshProUGUI>();   
+        inTMP.text = incountManager.BtnTMPs[selectBtnNum].text;
+        inTMP.fontSize = 16;
+
+        float newX = incountManager.BtnTMPs[selectBtnNum].GetComponent<RectTransform>().anchoredPosition.x;
+        float newY = incountManager.BtnTMPs[selectBtnNum].GetComponent<RectTransform>().anchoredPosition.y;
+        tempTMPObj.GetComponent<RectTransform>().anchoredPosition.Set(newX, newY);
+
+        tempTMPObj.transform.SetParent(gameObject.transform);
+
 
         OnActive(true);             //자식 오브젝트 활성화 ---------후에 페이드인 처리----------
         uiBlur.BeginBlur(2.0f);     //블러 시작 처리
@@ -281,13 +310,33 @@ public class ContinueIncount : MonoBehaviour
         if (isOn)
         {
             BlurUpDown(0);
+            dialougeGroupCG.alpha = 1;
+            child1.gameObject.SetActive(isOn);
         }
         else
         {
             BlurUpDown(2000);
+            StartCoroutine(SlowFadeOut());
         }
-        child1.gameObject.SetActive(isOn);
 
+    }
+
+    IEnumerator SlowFadeOut()
+    { 
+        float timer = 0f;
+        float startAlpha = 1f;
+        float endAlpha = 0f;
+        float duration = 0.7f;
+
+        while (timer < duration)
+        {
+            float currentValue = Mathf.Lerp(startAlpha, endAlpha, timer / duration);
+            dialougeGroupCG.alpha = currentValue;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        child1.gameObject.SetActive(false);
+        Destroy(tempTMPObj);
     }
 
     #region 버튼과 Fadeinout

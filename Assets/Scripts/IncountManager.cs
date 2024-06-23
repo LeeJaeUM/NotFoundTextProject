@@ -16,6 +16,12 @@ public class IncountManager : MonoBehaviour
     private TextMeshProUGUI[] btnTMPs = new TextMeshProUGUI[4];
     private CanvasGroup[] btnCanvasGroups = new CanvasGroup[4];
 
+    public TextMeshProUGUI[] BtnTMPs
+    {
+        get => btnTMPs; 
+    }
+
+
     public bool isChoise = false;           //선택지 진입 확인 bool 변수
     public bool isCon = false;              // 연속 선택지인지 확인
     public bool[] isContinues = new bool[4];// 선택지가 연속 선택지인지 ChoiseData에서 받음
@@ -243,8 +249,11 @@ public class IncountManager : MonoBehaviour
     }
 
 
-    IEnumerator FadeInCo(CanvasGroup canvasGroup, bool fadeIn, bool isChoise = false)
+    IEnumerator FadeInCo(CanvasGroup canvasGroup, bool fadeIn, bool isChoise = false, float delay = 0)
     {
+        if(delay > 0)
+            yield return new WaitForSeconds(delay); 
+
         float timer = 0f;
         float startAlpha = fadeIn ? 0f : 1f;
         float endAlpha = fadeIn ? 1f : 0f;
@@ -302,6 +311,9 @@ public class IncountManager : MonoBehaviour
         StartCoroutine(FadeInCo(firstTMPCanvasGroup, true, true));
         StartCoroutine(FadeInCo(secondTMPCanvasGroup, true, true));
 
+        onLengthCountPush?.Invoke(1, firstTMP.text);
+        StartCoroutine(SlowPush());
+
         choiseIndex = selectChoise.continuousIndex;
 
         ///버튼 활성화
@@ -312,11 +324,23 @@ public class IncountManager : MonoBehaviour
 
 
             //필요한 버튼만 입력 활성화 및 보이게 하기
-            StartCoroutine(FadeInCo(btnCanvasGroups[i], true, true));
+            StartCoroutine(FadeInCo(btnCanvasGroups[i], true, true, 2f + i * 0.9f));
             buttons[i].interactable = true;
 
             isContinues[i] = selectChoise.isContinues[i];
         }
+    }
+
+    /// <summary>
+    /// 선택지 진입 시 두 번째 텍스트 효과 발생을 늦게 보내기 위한 코루틴
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SlowPush()
+    {
+        string tempString = secondTMP.text;
+        secondTMP.text = string.Empty;
+        yield return new WaitForSeconds(1.8f);
+        onLengthCountPush?.Invoke(2, tempString);
     }
 
     /// <summary>
